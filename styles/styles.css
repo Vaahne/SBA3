@@ -1,6 +1,28 @@
+body{
+    background-color: aqua;
+}
 .content{
-    margin: 1rem auto ;
+    margin: 9rem auto ;
 }
 ul{
     list-style-type: none;
+}
+.todoList>*{
+    padding: 0.4rem ;
+    margin: 1rem ;
+}
+.centerText{
+    text-align: center;
+}
+.taskSection{
+    display: flex;
+}
+.taskSection >*{
+    padding: .6rem;
+    margin: .3rem;
+}
+.formStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
