@@ -12,6 +12,7 @@ let localStorageTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 h1.classList.add("centerText");
 form.classList.add("formStyle");
 taskArea.classList.add("taskSection");
+
 form.addEventListener('submit', addList);
 
 fromLocalStorage();
@@ -46,18 +47,21 @@ function addTemplate(todo,...flag) {
 
     todoContainerUl.appendChild(todoList);
     
-    if(flag.length == 0){
+    if(flag.length == 0){ // checks if it is coming from localStorage
         localStorageTasks.push(todo);
         localStorage.setItem("tasks",JSON.stringify(localStorageTasks));
     }
 
     editBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        span.contentEditable = true;
-        span.addEventListener('keydown',(e)=>{
-            if(e.key == 'Enter')
-                e.preventDefault();
-        });
+        let newContent = prompt("Enter the todo list to be updated");
+        if(newContent != ""){
+            let index = localStorageTasks.indexOf(span.textContent);
+            span.textContent = newContent;
+
+            localStorageTasks[index] = newContent;
+            localStorage.setItem("tasks",JSON.stringify(localStorageTasks));
+        }
     });
 
     deleteBtn.addEventListener('click', (e) => {
@@ -85,6 +89,7 @@ function addTemplate(todo,...flag) {
 function addList(e) {
     e.preventDefault();
     const task = document.getElementById("task");
+    task.classList.add("taskText");
     addTemplate(task.value);
     form.reset();
 }
@@ -94,4 +99,3 @@ function fromLocalStorage(){
        addTemplate(element,true); 
     });
 }
-
