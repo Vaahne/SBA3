@@ -1,5 +1,6 @@
 body{
-    background-color: aqua;
+    background-color: lightslategray;
+
 }
 .content{
     margin: 9rem auto ;
@@ -22,6 +23,10 @@ ul{
     margin: 1rem ;
     font-size: larger;
 }
+.todoList>span{
+    color: rgb(229, 236, 9);
+    font-weight: bolder;
+}
 .centerText{
     text-align: center;
 }
@@ -38,17 +43,18 @@ ul{
     align-items: center;
 }
 button{
-    border: 0.5em solid grey;
+    border: 0.2em solid grey;
     border-radius: 2rem;
     color: burlywood;
+    width: 5em;
 }
 input[type="checkbox"]{
     transform: scale(1.8);
 }
 input[type="submit"]{
-    border : .1rem solid rgb(69, 67, 67);
+    border : .1rem solid rgb(27, 86, 2);
     border-radius: 1rem;
-    padding: 1rem;
+    padding: .6rem;
     background-color: unset;
     width: 9rem;
     color: mintcream;
@@ -56,4 +62,19 @@ input[type="submit"]{
 }
 .taskText{
     border-radius: 1rem;
+}
+input[type="text"],[type="date"]{
+    border-radius: 1rem;
+    padding: 0.6em;
+}
+input[type="text"],[type="date"]::placeholder{
+    font-size: 1rem;
+    color: brown;
+}
+input{
+    font-size: 1rem;
+}
+.spanFlex{
+    display: flex;
+    flex-direction: column;
 }
