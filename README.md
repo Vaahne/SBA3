@@ -6,13 +6,14 @@
  View tasks
  Automatic saving to local storage
 ## Full CRUD operations
- Creates / Adds tasks
- Retrieves tasks
- Updates edited task
- Deletes tasks
+ Creates / Adds tasks.
+ Retrieves tasks.
+ Updates edited task.
+ Deletes tasks , after confirmation.
 ## Additional features
  Task completion strike-through when checked
+ Adds to the completed tasks list .
 ## Usage
  Adds tasks with text field and specify future due date.
- Edit/Delete task on click corresponding buttons next to the task
+ Edit/Delete task on click corresponding buttons next to the task.
  Check on a task to mark it completed.

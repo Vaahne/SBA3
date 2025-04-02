@@ -1,8 +1,10 @@
 body{
     background-color: lightslategray;
-
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
 }
 .content{
+    border: .4rem solid #90a19a;
     margin: 9rem auto ;
     padding: 1rem;
     background-color: cadetblue;

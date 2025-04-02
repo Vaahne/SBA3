@@ -1,5 +1,5 @@
 // alert("Hello !!!");
-// alert("Welcome to your todo List!!!");
+alert("Welcome to your todo List API !!!");
 
 const form = document.querySelector(".form");
 const add = document.getElementById("add");
@@ -16,14 +16,17 @@ const done = document.getElementById("done");
 // to get the existing tasks from localstorage if any.
 let localStorageTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+// Adding styles from css to the elements
 h1.classList.add("centerText");
 form.classList.add("formStyle");
 taskArea.classList.add("taskSection");
 
+//adding event listeners to the form
 form.addEventListener('submit', addList);
 
 fromLocalStorage();
 
+// adding task to li for every new task added to the todo list
 function addTemplate(todo,due,...flag) {
 
     // let due = dueDate.value;
@@ -48,32 +51,31 @@ function addTemplate(todo,due,...flag) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";    
     const editBtn = document.createElement("img");
-    // const editImg = document.createElement("img");
-    editBtn.setAttribute("src","../images/edit.jpg");
-    // editBtn.textContent = "Edit";    
-    // editBtn.appendChild(editImg);
+    editBtn.setAttribute("src","../images/edit.png");
+    editBtn.setAttribute("title","click to edit");
     const deleteBtn = document.createElement("img");
-    deleteBtn.setAttribute("src","../images/delete.jpg");
+    deleteBtn.setAttribute("src","../images/delete.png");
+    deleteBtn.setAttribute("title","click to delete");
 
     todoList.appendChild(checkBox);
     todoList.appendChild(spanDiv);
     todoList.appendChild(editBtn);
     todoList.appendChild(deleteBtn);
     
-
     todoContainerUl.appendChild(todoList);
+
     // checks if it is coming from localStorage
     if(flag.length == 0){ 
         localStorageTasks.push(`${todo}:${due}`);
         localStorage.setItem("tasks",JSON.stringify(localStorageTasks));
     }
 
-    // when edit is clicked
+    //  performs the operations, when edit is clicked 
     editBtn.addEventListener('click', (e) => {
         e.preventDefault();
         let newContent = prompt("Enter the todo list to be updated");
         if(newContent != "" && newContent != null){
-            let task = span.textContent;            
+            let task = e.target.parentNode.children[0].nextElementSibling.children[0].textContent;            
             // Editing the corresponding value in local storage
             for(let i = 0;i<localStorageTasks.length;i++){
                 if(localStorageTasks[i].split(":")[0] == task){
@@ -88,7 +90,7 @@ function addTemplate(todo,due,...flag) {
         }else
             alert("New edited task cannot be empty");
     });
-
+    // deletes the task from li and local storage after confirnation, when delete is clicked 
     deleteBtn.addEventListener('click', (e) => {
         e.preventDefault();
         let yesOrNo = confirm("Do you want to delete the task?");
@@ -110,11 +112,12 @@ function addTemplate(todo,due,...flag) {
             spanDiv.style.textDecoration = "line-through";
             spanDiv.style.textDecorationThickness = ".2rem";
 
-            let found = [...done.children].find((l)=> l.textContent == span.textContent);
+            let found = [...done.children].find((l)=>l.textContent == span.textContent);
             
             if(!found){
                 const liDone = document.createElement("li");
-                liDone.textContent = span.textContent;            
+                // liDone.textContent = span.textContent;            
+                liDone.textContent = e.target.nextElementSibling.firstChild.textContent;
                 done.appendChild(liDone);
             }
             done.style.display = "block";
