@@ -9,6 +9,7 @@ const taskArea = document.querySelector(".taskArea");
 const task = document.getElementById("task");
 const dueDate = document.getElementById("dueDate");
 dueDate.placeholder = "Enter due date";
+const done = document.getElementById("done");
 
 //  localStorage.removeItem("tasks");
 
@@ -46,15 +47,19 @@ function addTemplate(todo,due,...flag) {
 
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";    
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";    
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
+    const editBtn = document.createElement("img");
+    // const editImg = document.createElement("img");
+    editBtn.setAttribute("src","../images/edit.jpg");
+    // editBtn.textContent = "Edit";    
+    // editBtn.appendChild(editImg);
+    const deleteBtn = document.createElement("img");
+    deleteBtn.setAttribute("src","../images/delete.jpg");
 
+    todoList.appendChild(checkBox);
     todoList.appendChild(spanDiv);
     todoList.appendChild(editBtn);
     todoList.appendChild(deleteBtn);
-    todoList.appendChild(checkBox);
+    
 
     todoContainerUl.appendChild(todoList);
     // checks if it is coming from localStorage
@@ -88,7 +93,7 @@ function addTemplate(todo,due,...flag) {
         e.preventDefault();
         let yesOrNo = confirm("Do you want to delete the task?");
         if (yesOrNo) {
-            let task = e.target.parentNode.children[0].children[0].textContent;
+            let task = span.textContent;
             // checking the value in local storage and deleting it
             for(let i = 0;i< localStorageTasks.length;i++){
                 if(localStorageTasks[i].split(":")[0] == task){
@@ -101,14 +106,32 @@ function addTemplate(todo,due,...flag) {
         }
     });
     checkBox.addEventListener('change',(e)=>{
-        e.preventDefault();
         if(checkBox.checked){
             spanDiv.style.textDecoration = "line-through";
             spanDiv.style.textDecorationThickness = ".2rem";
-        }else
+
+            let found = [...done.children].find((l)=> l.textContent == span.textContent);
+            
+            if(!found){
+                const liDone = document.createElement("li");
+                liDone.textContent = span.textContent;            
+                done.appendChild(liDone);
+            }
+            done.style.display = "block";
+        }else{
             spanDiv.style.textDecoration = "none";
+            
+             [...done.children].forEach((l)=>{
+                if(l.textContent == spanDiv.children[0].textContent)
+                    l.remove()
+            });
+
+            if(done.children.length == 1)
+                done.style.display = "none";
+        }
     });
 }
+
 
 function addList(e) {
     e.preventDefault();

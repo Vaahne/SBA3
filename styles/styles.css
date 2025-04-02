@@ -19,7 +19,7 @@ ul{
     align-items: center;
 }
 .todoList>*{
-    padding: 0.4rem ;
+    border-radius: 0.4rem;
     margin: 1rem ;
     font-size: larger;
 }
@@ -42,12 +42,12 @@ ul{
     flex-direction: column;
     align-items: center;
 }
-button{
+/* button{
     border: 0.2em solid grey;
     border-radius: 2rem;
     color: burlywood;
     width: 5em;
-}
+} */
 input[type="checkbox"]{
     transform: scale(1.8);
 }
@@ -77,4 +77,18 @@ input{
 .spanFlex{
     display: flex;
     flex-direction: column;
+}
+#done{
+    display: none;
+    border: .4rem solid rgb(88 116 88);
+    border-radius: 1rem; 
+}
+#done >li{
+    padding:.4rem;
+    font-weight: bolder;
+    margin: .3rem;
+}
+img{
+    width: 2em;
+    border-radius: .3rem;
 }
