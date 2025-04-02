@@ -6,7 +6,7 @@
  View tasks
  Automatic saving to local storage
 ## Full CRUD operations
- Creates / Adds tasks.
+ Creates / Adds tasks. (tasks cannot be numbers alone)
  Retrieves tasks.
  Updates edited task.
  Deletes tasks , after confirmation.

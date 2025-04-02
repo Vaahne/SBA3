@@ -150,11 +150,21 @@ function addList(e) {
         return;
     }
 
-    if(regex.test(taskVal))
+    if(regex.test(taskVal)){
         alert("Task cannot be numbers only");
-    else if(localStorageTasks.includes(taskVal))
-        alert("Task already present");
-    else
+        return;
+    }
+    
+    let present = false;
+    localStorageTasks.forEach(element => {     // loop through all the existing data in local Storage  
+        let task = element.split(":");
+        if(task[0] == taskVal){
+            alert("Task already present");    
+            present = true;
+            return;
+        }
+    });
+    if(!present)
         addTemplate(taskVal,due);
     form.reset();
 }
