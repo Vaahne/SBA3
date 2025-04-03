@@ -1,5 +1,5 @@
 // alert("Hello !!!");
-alert("Welcome to your todo List API !!!");
+alert("Welcome to your Todo List API !!!");
 
 const form = document.querySelector(".form");
 const add = document.getElementById("add");
