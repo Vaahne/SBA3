@@ -75,7 +75,16 @@ function addTemplate(todo,due,completed,...flag) {
     //  performs the operations, when edit is clicked 
     editBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        const regex = /^\d+$/;
         let newContent = prompt("Enter the todo list to be updated",span.textContent);
+        if(newContent.length > 25){
+            alert("Text cannot be more than 25 characters");
+            return ;
+        }
+        if(regex.test(newContent)){
+            alert("Task cannot be numbers only!!!")
+            return;
+        }
         if(newContent != "" && newContent != null){
             let task = e.target.parentNode.children[0].nextElementSibling.children[0].textContent;            
             // Editing the corresponding value in local storage
@@ -85,7 +94,7 @@ function addTemplate(todo,due,completed,...flag) {
                 if(l.textContent == task)
                     l.textContent = newContent;
             });
-            
+
             span.textContent = newContent;
         }else
             alert("New edited task cannot be empty");
@@ -124,7 +133,6 @@ function addTemplate(todo,due,completed,...flag) {
         spanDiv.style.textDecorationThickness = ".2rem";
 
         let found = [...done.children].find((l)=>l.textContent == span.textContent);
-        // let task = e.target.nextElementSibling.firstChild.textContent;
         let task = span.textContent;
         if(!found){
             const liDone = document.createElement("li");
@@ -171,17 +179,30 @@ function addList(e) {
     }
     // checks if task already present in local storage
     let present = false;
+    // localStorageTasks.forEach(element => {   
+    //     const localTask = element.split(",")[0].split(":")[1];
+    //     if(localTask == taskVal){
+    //         alert("Task already present");
+    //         present = true;
+    //         return;
+    //     }  
+    // });
+    if(!isTaskPresent(taskVal))
+        addTemplate(taskVal,due,false);   
+        
+    form.reset();
+}
+
+function isTaskPresent(taskVal){
+    let present = false;
     localStorageTasks.forEach(element => {   
         const localTask = element.split(",")[0].split(":")[1];
         if(localTask == taskVal){
-            alert("Task already present");
+            alert("Task already exists!!!");
             present = true;
-            return;
         }  
     });
-    if(!present)
-        addTemplate(taskVal,due,false);
-    form.reset();
+    return present;
 }
 
 function fromLocalStorage(){
