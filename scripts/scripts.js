@@ -85,6 +85,9 @@ function addTemplate(todo,due,completed,...flag) {
             alert("Task cannot be numbers only!!!")
             return;
         }
+        if(isTaskPresent(newContent)){
+            return;
+        }
         if(newContent != "" && newContent != null){
             let task = e.target.parentNode.children[0].nextElementSibling.children[0].textContent;            
             // Editing the corresponding value in local storage
@@ -178,15 +181,6 @@ function addList(e) {
         return;
     }
     // checks if task already present in local storage
-    let present = false;
-    // localStorageTasks.forEach(element => {   
-    //     const localTask = element.split(",")[0].split(":")[1];
-    //     if(localTask == taskVal){
-    //         alert("Task already present");
-    //         present = true;
-    //         return;
-    //     }  
-    // });
     if(!isTaskPresent(taskVal))
         addTemplate(taskVal,due,false);   
         
