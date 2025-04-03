@@ -18,3 +18,5 @@
  Adds tasks with text field and specify future due date.
  Edit/Delete task on click corresponding buttons next to the task.
  Check on a task to mark it completed.
+## What could you have done differently during the planning stages of your project to make the execution easier?
+ During the planning stages , I would have thought more about possible future enhancements, like adding task catogories or notifications based on duedates. This would have helped ensure the application is more flexible and scalable as new features are added.
