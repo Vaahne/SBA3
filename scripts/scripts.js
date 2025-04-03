@@ -80,10 +80,12 @@ function addTemplate(todo,due,completed,...flag) {
             let task = e.target.parentNode.children[0].nextElementSibling.children[0].textContent;            
             // Editing the corresponding value in local storage
             editOrDeleteLocalStorage(task,newContent,"edit");
+
             [...done.children].forEach((l)=>{
                 if(l.textContent == task)
                     l.textContent = newContent;
             });
+            
             span.textContent = newContent;
         }else
             alert("New edited task cannot be empty");
