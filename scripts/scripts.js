@@ -23,7 +23,6 @@ taskArea.classList.add("taskSection");
 
 //adding event listeners to the form
 form.addEventListener('submit', addList);
-
 fromLocalStorage();
 
 // adding task to li for every new task added to the todo list using template
