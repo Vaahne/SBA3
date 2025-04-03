@@ -4,6 +4,7 @@
  Core Functionality
  Add Tasks with due dates
  View tasks
+ Marking tasks as completed
  Automatic saving to local storage
 ## Full CRUD operations
  Creates / Adds tasks. (tasks cannot be numbers alone)
